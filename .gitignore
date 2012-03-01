@@ -1,0 +1,4 @@
+*.pyc
+*.pyo
+todo.txt
+sync_to_package.py
