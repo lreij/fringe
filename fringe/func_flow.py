@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-## Jerry Lu <lreij@163.com>
 import functools
 
 CALL_LEVEL = 0

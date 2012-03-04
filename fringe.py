@@ -1,15 +1,11 @@
 # -*- coding:utf-8 -*-
-## Jerry Lu <lreij@163.com>
 from __future__ import with_statement
 import os
-import sys
+import optparse
 
 
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print "No folder specifid."
-        return
-    source = sys.argv[1]
+def add_function_flow(option, opt_str, value, parser):
+    source = parser.rargs[0]
     if os.path.isdir(source):
         for root, dirs, files in os.walk(source):
             for f in files:
@@ -28,3 +24,16 @@ if __name__ == '__main__':
                         file.write(''.join(new_file))
     else:
         print "It is not a folder."
+
+
+def main():
+    p = optparse.OptionParser()
+    p.add_option("-f", action="callback",
+            callback=add_function_flow, dest="sourcecode",
+            help="add func_flow function decorator to all sourcecode file")
+    p.parse_args()
+
+
+if __name__ == '__main__':
+    main()
+
